@@ -53,6 +53,11 @@ enum layers {
 #define AE       RALT(KC_Q)
 #define OE       RALT(KC_P)
 
+#define CTL_Z    LCTL(KC_Z)
+#define CTL_X    LCTL(KC_X)
+#define CTL_C    LCTL(KC_C)
+#define CTL_V    LCTL(KC_V)
+
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
 // The notation `mod/tap` denotes a key that activates the modifier `mod` when held down, and
 // produces the key `tap` when tapped (i.e. pressed and released).
@@ -120,22 +125,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 /*
- * Nav Layer: Media, navigation
+ * Nav Layer: Navigation and non-printable characters
  *
  * ,-----------------------------------------.                              ,-----------------------------------------.
- * |      |      |      |      |      |      |                              | PgUp | Home |   ↑  | End  | VolUp|Delete|
+ * |      |      |      |      |      | Ins  |                              | PgUp | Home |   ↑  | End  |CapsLk|      |
  * |------+------+------+------+------+------|                              |------+------+------+------+------+------|
- * |      |  GUI |  Alt | Ctrl | Shift|      |                              | PgDn |  ←   |   ↓  |   →  | VolDn|Insert|
+ * |      |  Alt |  GUI | Shift| Ctrl | RAlt |                              | PgDn |  ←   |   ↓  |   →  |Delete|      |
  * |------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |ScLck |  |      |      | Pause|M Prev|M Play|M Next|VolMut|PrtSc |
+ * |      |  ^Z  |  ^X  |  ^C  | LGUI |  ^V  |      |      |  |      |      | Enter| Bksp | Tab  | Menu | PrtSc|      |
  * `--------------------+------+------+------+------+------|  |------+------+------+------+------+--------------------'
  *                      |      |      |      |      |      |  |      |      |      |      |      |
  *                      `----------------------------------'  `----------------------------------'
  */
     [_NAV] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_VOLU, KC_DEL,
-      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD, KC_INS,
-      _______, _______, _______, _______, _______, _______, _______, KC_SCRL, _______, _______,KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
+      _______, _______, _______, _______, _______,  KC_INS,                                     KC_PGUP, KC_HOME,  KC_UP ,  KC_END, KC_CAPS, _______,
+      _______, OS_LALT, OS_LGUI, OS_LSFT, OS_LCTL, OS_RALT,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL, _______,
+      _______,  CTL_Z ,  CTL_X ,  CTL_C , KC_LGUI,  CTL_V , _______, _______, _______, _______,  KC_ENT, KC_BSPC,  KC_TAB,  KC_APP, KC_PSCR, _______,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
